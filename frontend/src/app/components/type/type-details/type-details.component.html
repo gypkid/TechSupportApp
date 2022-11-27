@@ -1,0 +1,35 @@
+<div class="detailsform">
+    <div *ngIf="currentType.typeId" class="edit-form">
+      <h4>Category Details</h4>
+      <form>
+        <div class="form-group">
+          <label for="type">Type name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="type"
+            required
+            [(ngModel)]="currentType.type"
+            name="type"
+          />
+        </div>
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteType()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateType()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentType.typeId">
+      <br />
+      <p>Cannot access this Type...</p>
+    </div>
+  </div>

@@ -1,0 +1,71 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by phone number"
+          [(ngModel)]="firstName"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Customer List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let customer of customers; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCustomer(customer, i)"
+        >
+          {{ customer.firstName }} {{ customer.lastName}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6 ">
+      <div class="currentCustomer" *ngIf="currentCustomer">
+        <h4>Customer</h4>
+        <div>
+          <label><strong>Customer ID:</strong></label> {{ currentCustomer.personId }}
+        </div>
+        <div>
+          <label><strong>First Name:</strong></label> {{ currentCustomer.firstName }}
+        </div>
+        <div>
+            <label><strong>Last Name:</strong></label> {{ currentCustomer.lastName }}
+        </div>
+        <div>
+          <label><strong>Phone number:</strong></label> {{ currentCustomer.phonenumber }}
+        </div>
+        <div>
+          <label><strong>Email:</strong></label> {{ currentCustomer.email }}
+        </div>
+        <div >
+            <label><strong>Address:</strong></label> 
+                {{ currentCustomer?.address?.street }}
+                {{ currentCustomer?.address?.number }}
+                <br>
+                {{ currentCustomer?.address?.zipcode }}
+                {{ currentCustomer?.address?.city }}
+        </div>
+  
+        <a class="badge badge-warning" routerLink="{{ currentCustomer.personId }}" >
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentCustomer">
+        <h4>Add Customer</h4>
+        <app-add-customer></app-add-customer>
+      </div>
+    </div>
+  </div>
+  

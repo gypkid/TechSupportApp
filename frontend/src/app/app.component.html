@@ -1,0 +1,146 @@
+<div class="page-wrapper chiller-theme toggled" *ngIf="isLoggedIn">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div id="toggle-sidebar">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="sidebar-brand">
+                    <a href="#">TECH SUPPORT</a>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name"> 
+                            <strong>{{ username }}</strong>
+                        </span>
+                        <span class="user-role">
+                          <li *ngFor="let role of roles">
+                            {{ role }}
+                          </li>
+                        </span>
+                    </div>
+                </div>
+                <!-- sidebar-header  -->
+                <!-- <div class="sidebar-search">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control search-menu" placeholder="Search...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>General</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a [routerLink]="['customer']" routerLinkActive="customer" >
+                                <span>Customers</span>
+                            </a>
+                        </li>
+                        
+                        <!-- <li class="sidebar-dropdown">
+                            <a href="#">
+                                <span>Tasks</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">General</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Panels</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tables</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Icons</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Forms</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> -->
+
+                        <li class="sidebar-dropdown">
+                            <a [routerLink]="['task']" routerLinkActive="task" >
+                                <span>Tasks</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a [routerLink]="['task/my']" routerLinkActive="task/my" >
+                                <span>My Tasks</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a [routerLink]="['category']" routerLinkActive="category">
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a [routerLink]="['type']" routerLinkActive="type">
+                                <span>Types</span>
+                            </a>
+                        </li>
+                        
+                        <li class="header-menu">
+                            <span>Settings</span>
+                        </li>
+                        <li>
+                            <a [routerLink]="['profile']" routerLinkActive="profile">
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                          <a href (click)="logout()">
+                              <span>Log Out</span>
+                          </a>
+                      </li>
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+            <!-- <div class="sidebar-footer">
+                <a href="#">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-warning notification">3</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification">7</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <span class="badge-sonar"></span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div> -->
+        </nav>
+        <!-- sidebar-wrapper  -->
+        <main class="page-content">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+</div>
+
+
+
+<div *ngIf="!isLoggedIn">
+    <router-outlet></router-outlet>
+</div>

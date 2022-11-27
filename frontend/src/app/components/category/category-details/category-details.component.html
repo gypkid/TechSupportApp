@@ -1,0 +1,35 @@
+<div class="detailsform">
+    <div *ngIf="currentCategory.categoryId" class="edit-form">
+      <h4>Category Details</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="currentCategory.name"
+            name="name"
+          />
+        </div>
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteCategory()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateCategory()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentCategory.categoryId">
+      <br />
+      <p>Cannot access this Customer...</p>
+    </div>
+  </div>
